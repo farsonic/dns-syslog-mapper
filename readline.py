@@ -35,7 +35,7 @@ logger.addFilter(f)
 
 
 syslog = SysLogHandler(address=('192.168.0.250', 514))
-formatter = logging.Formatter('%(asctime)s %(hostname)s YOUR_APP %(message)s', datefmt='%Y-%m-%dT%H:%M:%S')
+formatter = logging.Formatter('%(asctime)s %(hostname)s DNS-Tracker %(message)s', datefmt='%Y-%m-%dT%H:%M:%S')
 syslog.setFormatter(formatter)
 logger.addHandler(syslog)
 
