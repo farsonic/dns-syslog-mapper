@@ -82,27 +82,18 @@ if log_data != False:
     # If so, we now have a dictionary where we can call each element by name
     print(log_data['host'])
     print(log_data['ip'])
-    revname = dns.reversename.from_address(log_data['ip'])
-    rrset = resolver.query(revname, 'PTR').rrset
-    entries = str(rrset).split()
-    fqdn  =  entries[4]
-    names = fqdn.split(".")
-    hostname = names[0]
-    print hostname
 
     with open('/var/lib/misc/dnsmasq.leases') as leases:
       for line in leases:
          values = line.split()
          mac = values[1]
          ip = values[2]
-         #print mac,ip
+         name = values[3]
          if ip == str(log_data['ip']):
-          print mac
+          print mac,ip,name
           break
 
-    logger.info("sourceip=\""+log_data['ip']+" \"fqdn=\""+fqdn+"\" hostname=\""+ hostname +"\"+ " mac=\""+mac+"\" request= "+log_data['host'])
-    #print rrset
+    logger.info("source-address=\""+log_data['ip'] +"\"" + " dns-request=\""+log_data['host']+"\""+" username=\""+mac+"\""+" roles=\""+name+"\""              )
 
-# ... and use them as we want...
 
 leases.close()
