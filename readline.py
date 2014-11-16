@@ -42,7 +42,7 @@ logger.addHandler(syslog)
 
 
 def extract_log_data(logs):
-    data = re.search(r"^(\w+ \d{1,2} \d{1,2}\:\d{1,2}\:\d{1,2}) (\w+) dnsmasq\[(\d+)\]\: query\[(\w+)\] ([a-zA-Z\.]+) from (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$", logs)
+    data = re.search(r"^(\w+ \d{1,2} \d{1,2}\:\d{1,2}\:\d{1,2}) (\w+) dnsmasq\[(\d+)\]\: query\[(\w+)\] ([a-zA-Z\-\.]+) from (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$", logs)
     if data:
         info = {
             'date': data.group(1),
@@ -96,4 +96,3 @@ if log_data != False:
     logger.info("source-address=\""+log_data['ip'] +"\"" + " dns-request=\""+log_data['host']+"\""+" username=\""+mac+"\""+" roles=\""+name+"\""              )
 
 
-leases.close()
