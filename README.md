@@ -4,19 +4,21 @@ This script is intended to be used in a closed environemnt where the network is 
 
 When DNSMASQ receives a DNS lookup request from a client it processes the request and returns the IP address to the client. With debugging enabled DNSMASQ will log all DNS requests along with the IP address of the user that has made the request. This script is intended to take the DNS request and process this into a new SYSLOG event (for forwarding to a SIEM) that will contain the following information
 
+```
 * MAC Address of the user 
 * Assigned IP address
 * Client Identifier (if know, otherwise *)
 * Requested hostname for resolution 
+```
 
 The following event is a typical example from DNSMASQ that would be processed 
-
+```
   2014-11-17T10:57:28.242340+10:00 cloud dnsmasq[15100]: query[A] www-domain.com from 192.168.0.135
-
+```
 The script takes this event in parses the DNSMASQ leases file and generates a new SYSLOG event that would appear as follows
-
+```
   2014-11-17T13:18:29 cloud DNS-Tracker source-address="192.168.0.135" dns-request="www-domain.com" mac-address="aa:aa:aa:aa:aa:aa" client-id="client-name" 
-
+```
 
 DNSMASQ Configuration
 =====================
