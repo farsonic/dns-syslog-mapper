@@ -13,11 +13,11 @@ When DNSMASQ receives a DNS lookup request from a client it processes the reques
 
 The following event is a typical example from DNSMASQ that would be processed 
 ```
-  2014-11-17T10:57:28.242340+10:00 cloud dnsmasq[15100]: query[A] www-domain.com from 192.168.0.135
+  2014-11-17T10:57:28.242340+10:00 server dnsmasq[15100]: query[A] www-domain.com from 192.168.0.135
 ```
 The script takes this event in parses the DNSMASQ leases file and generates a new SYSLOG event that would appear as follows
 ```
-  2014-11-17T13:18:29 cloud DNS-Tracker source-address="192.168.0.135" dns-request="www-domain.com" mac-address="aa:aa:aa:aa:aa:aa" client-id="client-name" 
+  2014-11-17T13:18:29 server DNS-Tracker source-address="192.168.0.135" dns-request="www-domain.com" mac-address="aa:aa:aa:aa:aa:aa" client-id="client-name" 
 ```
 
 DNSMASQ Configuration
