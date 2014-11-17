@@ -35,7 +35,7 @@ module(load="omprog")
 
 if $msg contains "query[A]" then 
     action(type="omprog"
-           binary="/home/fprowse/git/mac-to-dns-logger/readline.py")
+           binary="/path/to//readline.py")
 ```
 
 
