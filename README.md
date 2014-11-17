@@ -22,8 +22,6 @@ DNSMASQ Configuration
 =====================
 DNSMASQ by default doesn't log all requests. To enable this functionality place the following configuration option in your /etc/dnsmasq.conf file
 
-# For debugging purposes, log each DNS query as it passes through
-# dnsmasq.
 log-queries
 
 RSYSLOG Configuration
