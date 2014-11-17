@@ -29,6 +29,7 @@ RSYSLOG Configuration
 RSYSLOG can process individual lines/events as they are logged. For this requirement RSYSLOG will monitor events for any line matching query[A] and pass to the script for processing and SYSLOG generation. Place the following entry into /etc/rsyslog.conf and restart rsyslog. 
 
 module(load="omprog")
+
 if $msg contains "query[A]" then 
     action(type="omprog"
            binary="/home/fprowse/git/mac-to-dns-logger/readline.py")
